@@ -1,34 +1,44 @@
-function createWordDivs(word) {
-    const wordContainer = document.getElementById('wordContainer');
-    wordContainer.innerHTML = ''; // Limpa o conteúdo anterior, se houver
+//document.querySelector().focus; //usar depois
 
-    // Cria uma div para cada letra da palavra
-    for (let i = 0; i < word.length; i++) {
-        const letterDiv = document.createElement('div');
-        letterDiv.classList.add('letter');
-        letterDiv.textContent = '-';
-        letterDiv.dataset.index = i; // Adiciona um atributo 'data-index' para identificar a posição da letra na palavra
-        wordContainer.appendChild(letterDiv);
-    }
+//Intial Data
+let current_word = '';
+let current_id = 0;
+show_word();
 
-    // Adiciona um evento de escuta de entrada para revelar as letras conforme o usuário digita
-    document.addEventListener('keypress', function (event) {
-        const key = event.key.toLowerCase();
-        const letterDivs = wordContainer.querySelectorAll('.letter');
-        letterDivs.forEach(div => {
-            const index = parseInt(div.dataset.index);
-            //parseInt(div.getAttribute('data-index'));
 
-            if (word[index] === key && div.textContent === '-') {
-                div.textContent = key;
-                div.classList.add('revealed');
-                setTimeout(() => {
-                    div.classList.remove('revealed');
-                }, 500);
-            }
+//Functions
+function show_word() {
+    let word_turn = spell[current_id];
+    const word_container = document.querySelector('#word-section');
+    word_container.innerHTML = '';
+
+    //criar as div's filhas que armazenarão cada letra
+    for (let i = 0; i < spell[current_id].word.length; i++) {
+        const letter_div = document.createElement('div');
+        letter_div.classList.add('letter');
+        letter_div.textContent = '-';
+        letter_div.dataset.index = i; //Adiciona um atributo
+        word_container.appendChild(letter_div);
+    };
+
+    document.querySelectorAll('.letter').forEach((item) => {
+        item.addEventListener('click', () => {
+            console.log('Clicou em ', item)
+            within();
         });
     });
-}
 
-// Exemplo de uso
-createWordDivs('ansioso');
+    function within() {
+        document.addEventListener('keyup', (e) => {
+            console.log(e.key)
+            write_letter_turn(e);
+        });
+    };
+
+
+    function write_letter_turn() {
+        //remover o event listener imediatamente após o usuário digitar
+        document.removeEventListener('keyup', within);
+    };
+
+};

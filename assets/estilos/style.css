@@ -38,6 +38,25 @@
     animation: reveal 0.5s ease;
 }
 
-#wordContainer div.letter {
+
+
+
+
+
+
+
+
+#word-section {
+    display: block;
+    width: 80%;
+    height: 70px;
+    background-color: black;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+#word-section div.letter {
     display: inline-block;
+    padding: 20px;
 }
