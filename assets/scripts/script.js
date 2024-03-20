@@ -1,8 +1,13 @@
-//document.querySelector().focus; //usar depois
-
 //Intial Data
 let current_word = '';
 let current_id = 0;
+let banned_letters = [
+    'enter', 'Alt', 'shift', 'control', 'capslock',
+    '*', '+', '-', '.', '=', '-', '_', ':', ';', '/',
+    '|', 'arrowup', 'arrowdown'
+];
+let special_letters = ['arrowleft', 'arrowright'];
+
 show_word();
 
 
@@ -48,8 +53,19 @@ function show_word() {
 
         //substituir o '-' da div pela letra digitada
         console.log('O índice da letra clicada foi: ', letter_index)
-        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
 
+        if (!banned_letters.includes(e)) {
+            if (!special_letters.includes(e)) {
+                document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
+
+                toggle_letter();
+            } else { //avançar ou retroceder a letra digitada
+                console.log('seta clicada')
+            };
+        };
+
+        //Para caso o usuário digitar uma letra inválida, pois o programa deve continuar sem dar erros.
+        letter_index--;
         toggle_letter();
     };
 
