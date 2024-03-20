@@ -6,7 +6,7 @@ let banned_letters = [
     '*', '+', '-', '.', '=', '-', '_', ':', ';', '/',
     '|', 'arrowup', 'arrowdown'
 ];
-let special_letters = ['arrowleft', 'arrowright'];
+let special_letters = ['arrowleft', 'arrowright', 'backspace'];
 
 show_word();
 
@@ -59,7 +59,7 @@ function show_word() {
                 document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
 
                 toggle_letter();
-            } else { //avançar ou retroceder a letra digitada
+            } else { //avançar, retroceder ou apagar a letra digitada
                 console.log('seta clicada')
 
                 if (e === 'arrowleft') {
@@ -70,6 +70,11 @@ function show_word() {
                 } else if (e === 'arrowright') {
                     if (letter_index < word_turn.word.length - 1) {
                         toggle_letter();
+                    };
+                } else if (e === 'backspace') {
+                    console.log('jjjj')
+                    if (letter_index !== 0) {
+                        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
                     };
                 };
             };
@@ -89,7 +94,13 @@ function show_word() {
             within();
         } else if (letter_index === word_turn.word.length - 1) {
             console.log(`A letra não pode ser pulada pois é a ultima`);
+
+            //document.querySelector('#finish_or_reset').addEventListener('click', finish_reset);
         };
     };
+
+};
+
+function finish_reset() {
 
 };
