@@ -2,7 +2,7 @@
 let current_word = '';
 let current_id = 0;
 let banned_letters = [
-    'enter', 'Alt', 'shift', 'control', 'capslock',
+    'enter', 'alt', 'shift', 'control', 'capslock',
     '*', '+', '-', '.', '=', '-', '_', ':', ';', '/',
     '|', 'arrowup', 'arrowdown'
 ];
@@ -54,13 +54,24 @@ function show_word() {
         //substituir o '-' da div pela letra digitada
         console.log('O índice da letra clicada foi: ', letter_index)
 
-        if (!banned_letters.includes(e)) {
+        if (!banned_letters.includes(e) && isNaN(e)) {
             if (!special_letters.includes(e)) {
                 document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
 
                 toggle_letter();
             } else { //avançar ou retroceder a letra digitada
                 console.log('seta clicada')
+
+                if (e === 'arrowleft') {
+                    if (letter_index !== 0) {
+                        letter_index -= 2;
+                        toggle_letter();
+                    };
+                } else if (e === 'arrowright') {
+                    if (letter_index < word_turn.word.length - 1) {
+                        toggle_letter();
+                    };
+                };
             };
         };
 
