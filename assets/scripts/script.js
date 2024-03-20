@@ -34,7 +34,7 @@ function show_word() {
 
     const lp = (e) => {
         console.log(e.key)
-        write_letter_turn(e);
+        write_letter_turn(e.key.toLowerCase());
     }
 
     function within() {
@@ -47,8 +47,22 @@ function show_word() {
         document.removeEventListener('keyup', lp);
 
         //substituir o '-' da div pela letra digitada
-        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e.key;
         console.log('O índice da letra clicada foi: ', letter_index)
+        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
+
+        toggle_letter();
+    };
+
+    function toggle_letter() {
+        //pular para a próxima div para continuar escrevendo
+        if (letter_index < word_turn.word.length - 1) {
+            console.log(`Pulou a letra de ${letter_index} para ${letter_index + 1}`)
+            letter_index++;
+
+            within();
+        } else if (letter_index = word_turn.word.length) {
+            console.log(`A letra não pode ser pulada pois é a ultima`);
+        };
     };
 
 };
