@@ -60,7 +60,7 @@ function show_word() {
             letter_index++;
 
             within();
-        } else if (letter_index = word_turn.word.length) {
+        } else if (letter_index === word_turn.word.length - 1) {
             console.log(`A letra não pode ser pulada pois é a ultima`);
         };
     };
