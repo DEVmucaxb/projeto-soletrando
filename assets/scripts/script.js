@@ -11,7 +11,6 @@ let banned_letters = [
 ];
 let special_letters = ['arrowleft', 'arrowright', 'backspace'];
 
-
 show_word();
 
 
@@ -79,6 +78,9 @@ function show_word() {
                     console.log('jjjj')
                     if (letter_index !== 0) {
                         document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
+                        letter_index--;
+                    } else {
+                        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
                     };
                 };
             };
@@ -99,6 +101,11 @@ function show_word() {
         } else if (letter_index === word_turn.word.length - 1) {
             console.log(`A letra não pode ser pulada pois é a ultima`);
         };
+    };
+
+    function visual_within(x) { //não consegui fazer
+        x.classList.add('within');
+        setTimeout(() => x.classList.remove('within'), 1000);
     };
 
 };

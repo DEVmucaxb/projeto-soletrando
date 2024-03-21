@@ -30,7 +30,7 @@ Grandes telas: acima de 1200px
     }
 
     section {
-        /*era body*/
+        display: block;
         background-color: white;
         overflow: hidden;
         width: 100%;
@@ -91,6 +91,38 @@ Grandes telas: acima de 1200px
         width: 100%;
         height: 100%;
         backdrop-filter: blur(80px);
+    }
+
+    main {
+        width: 85vw;
+        height: 50vh;
+    }
+
+    div#word-section {
+        float: left;
+        width: 65%;
+        height: 95%;
+        display: flex;
+
+    }
+
+    div.w {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        float: right;
+        width: 33%;
+        height: 95%;
+    }
+
+    div.w #input_id {
+        float: top;
+    }
+
+    div.w #finish_or_reset {
+        float: bottom;
     }
 }
 
@@ -115,7 +147,7 @@ Grandes telas: acima de 1200px
     }
 
     section {
-        /*era body*/
+        display: block;
         background-color: white;
         overflow: hidden;
         width: 100%;
@@ -176,6 +208,38 @@ Grandes telas: acima de 1200px
         width: 100%;
         height: 100%;
         backdrop-filter: blur(80px);
+    }
+
+    main {
+        width: 85vw;
+        height: 50vh;
+    }
+
+    div#word-section {
+        float: left;
+        width: 65%;
+        height: 95%;
+        display: flex;
+
+    }
+
+    div.w {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        float: right;
+        width: 33%;
+        height: 95%;
+    }
+
+    div.w #input_id {
+        float: top;
+    }
+
+    div.w #finish_or_reset {
+        float: bottom;
     }
 
 }

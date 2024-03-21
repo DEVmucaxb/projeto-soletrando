@@ -66,10 +66,19 @@ main {
     text-align: center;
 }
 
+section {
+    display: none;
+}
+
 
 #word-section {
     display: block;
     float: top;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
 
 
     padding: 10px;
@@ -81,7 +90,6 @@ main {
 
 #word-section div.letter {
     display: inline-block;
-    padding: 20px;
 }
 
 div.w {
@@ -108,4 +116,13 @@ div.w {
     margin-top: 5px;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+.within {
+    border-right: 1px solid black;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
 }
