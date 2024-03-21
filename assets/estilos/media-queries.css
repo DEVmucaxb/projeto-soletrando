@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+/* Typical Device Breakpoint 
+_____________________________
+Pequenas telas: até 600px
+Celular: de 601px até 768px
+Tablet: de 769px até 992px
+Desktop: de 993px até 1200px
+Grandes telas: acima de 1200px
+*/
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    /* tablet */
+
+    :root {
+        --cor1: #F20519;
+        /*red*/
+        --cor2: #F20530;
+        /*light red*/
+        --cor3: #0597F2;
+        /*blue*/
+        --cor4: #05AFF2;
+        /*light blue*/
+        --cor5: #F2D3AC;
+        /*neutral color*/
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    section {
+        /*era body*/
+        background-color: white;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    section div.animation {
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        animation: gradient 4s infinite;
+    }
+
+    @keyframes gradient {
+        70% {
+            transform: scale(1.2) translate(50px);
+        }
+    }
+
+    section .animation:nth-child(1) {
+        height: 90%;
+        width: 80%;
+        background-color: #ff057c;
+        top: -10%;
+        left: -20%;
+    }
+
+    section .animation:nth-child(2) {
+        width: 70%;
+        height: 80%;
+        background-color: #800f86;
+        top: -12%;
+        right: -12%;
+        animation-delay: 2s;
+    }
+
+    section .animation:nth-child(3) {
+        width: 80%;
+        height: 65%;
+        background-color: #1619b9;
+        bottom: -15%;
+        right: -20%;
+        animation-delay: 0.3s;
+    }
+
+    section .animation:nth-child(4) {
+        width: 75%;
+        height: 50%;
+        background-color: #1ba8e9;
+        bottom: -10%;
+        left: -18%;
+        animation-delay: 1.2s;
+    }
+
+    section::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(80px);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    /* Telas Grandes */
+
+    :root {
+        --cor1: #F20519;
+        /*red*/
+        --cor2: #F20530;
+        /*light red*/
+        --cor3: #0597F2;
+        /*blue*/
+        --cor4: #05AFF2;
+        /*light blue*/
+        --cor5: #F2D3AC;
+        /*neutral color*/
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    section {
+        /*era body*/
+        background-color: white;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    section div.animation {
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        animation: gradient 4s infinite;
+    }
+
+    @keyframes gradient {
+        70% {
+            transform: scale(1.2) translate(50px);
+        }
+    }
+
+    section .animation:nth-child(1) {
+        height: 90%;
+        width: 80%;
+        background-color: #ff057c;
+        top: -10%;
+        left: -20%;
+    }
+
+    section .animation:nth-child(2) {
+        width: 70%;
+        height: 80%;
+        background-color: #800f86;
+        top: -12%;
+        right: -12%;
+        animation-delay: 2s;
+    }
+
+    section .animation:nth-child(3) {
+        width: 80%;
+        height: 65%;
+        background-color: #1619b9;
+        bottom: -15%;
+        right: -20%;
+        animation-delay: 0.3s;
+    }
+
+    section .animation:nth-child(4) {
+        width: 75%;
+        height: 50%;
+        background-color: #1ba8e9;
+        bottom: -10%;
+        left: -18%;
+        animation-delay: 1.2s;
+    }
+
+    section::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(80px);
+    }
+
+}

@@ -119,8 +119,10 @@ function finish_reset() {
         //checar se a palavra digitada é a correta
         if (check_word() === true) {
             console.log('Acertou a palavra!');
+            document.body.style.backgroundColor = 'green';
         } else if (!check_word()) {
             console.log('errou a palavra');
+            document.body.style.backgroundColor = 'red';
         } else if (check_word() === 'incompleta') {
             alert('Digite em todos os espaços');
         };

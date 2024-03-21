@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reveal Letters with Animation</title>
     <link rel="stylesheet" href="./assets/estilos/style.css">
+    <link rel="stylesheet" href="./assets/estilos/media-queries.css">
     <script src="./assets/scripts/questions.js" defer></script>
     <script src="./assets/scripts/script.js" defer></script>
 
@@ -14,8 +15,26 @@
 
 <body>
 
-    <div id="word-section"></div>
-    
+    <section>
+        <div class="animation"></div>
+        <div class="animation"></div>
+        <div class="animation"></div>
+        <div class="animation"></div>
+    </section>
+
+
+    <main>
+        <div id="word-section"></div>
+        <div class="w">
+            <input type="number" id="input_id" placeholder="id da palavra">
+            <button id="finish_or_reset" data-finishreset="1">checar</button>
+        </div>
+        <!--
+            0 = reset
+            1 = finish
+        -->
+    </main>
+
 </body>
 
 </html>
