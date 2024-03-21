@@ -4,9 +4,13 @@ let current_id = 0;
 let banned_letters = [
     'enter', 'alt', 'shift', 'control', 'capslock',
     '*', '+', '-', '.', '=', '-', '_', ':', ';', '/',
-    '|', 'arrowup', 'arrowdown'
+    '|', 'arrowup', 'arrowdown', 'insert', 'delete',
+    'home', 'end', 'pageup', 'pagedown', 'numlock',
+    'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8',
+    'f9', 'f10', 'f11', 'f12', 'altgraph', 'contextmenu'
 ];
 let special_letters = ['arrowleft', 'arrowright', 'backspace'];
+
 
 show_word();
 
@@ -94,13 +98,69 @@ function show_word() {
             within();
         } else if (letter_index === word_turn.word.length - 1) {
             console.log(`A letra não pode ser pulada pois é a ultima`);
-
-            //document.querySelector('#finish_or_reset').addEventListener('click', finish_reset);
         };
     };
 
 };
 
+
+
+
+
+document.querySelector('#finish_or_reset').addEventListener('click', finish_reset);
+
 function finish_reset() {
+    let word_turn = spell[current_id];
+    let f_r = document.querySelector('#finish_or_reset').getAttribute('data-finishreset');
+
+    if (f_r === '1') {
+        document.querySelector('#finish_or_reset').setAttribute('data-finishreset', '0');
+
+        //checar se a palavra digitada é a correta
+        if (check_word() === true) {
+            console.log('Acertou a palavra!');
+        } else if (!check_word()) {
+            console.log('errou a palavra');
+        } else if (check_word() === 'incompleta') {
+            alert('Digite em todos os espaços');
+        };
+
+    } else if (f_r === '0') {
+        document.querySelector('#finish_or_reset').setAttribute('data-finishreset', '1');
+
+        //resetar o soletrando.
+        reset_game();
+    };
+
+    function check_word() {
+        let letters = [];
+        let l = document.querySelectorAll('.letter').forEach((item) => {
+            letters.push(item.textContent);
+        }); //Ok
+
+        console.log('checou', letters)
+
+        for (let i in letters) {
+
+            if (letters[i] === '-') {
+                return 'incompleta';
+            };
+        };
+
+        for (let i in letters) {
+            console.log('checagem: ', letters[i], word_turn.word[i])
+
+            if (letters[i] !== word_turn.word[i]) {
+                return false; //errou a palavra
+            };
+        };
+
+        return true; //acertou a palavra
+    };
+
+    function reset_game() {
+        console.log('resetou')
+
+    };
 
 };
