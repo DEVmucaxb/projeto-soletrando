@@ -25,6 +25,8 @@ Grandes telas: acima de 1200px
 
     body {
         overflow: hidden;
+        width: 100vw;
+        height: 100%;
     }
 
     section {
@@ -86,8 +88,8 @@ Grandes telas: acima de 1200px
     section::after {
         position: absolute;
         content: "";
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         backdrop-filter: blur(80px);
     }
 
