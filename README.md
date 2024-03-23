@@ -1,2 +1,2 @@
 # projeto-soletrando
- Projeto de contribuição para o evento Soletrando da ETEEMM
+ esboço de uma abordagem lúdica para incentizar professores de Língua Portuguesa a despertarem o desejo das crianças pelas letras, feito para ser usado em auditórios em forma de competição. Esse projeto foi inspirado em uma iniciativa de mesmo nome da minha querida professora Lenilda Teixeira.
