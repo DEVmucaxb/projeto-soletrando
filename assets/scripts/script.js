@@ -1,7 +1,7 @@
 //Intial Data
 let current_word = '';
 let current_id = 0;
-let special_letters = ['arrowleft', 'arrowright', 'backspace'];
+let special_letters = ['arrowleft', 'arrowright', 'backspace', 'dead'];
 let banned_letters = [
     'enter', 'alt', 'shift', 'control', 'capslock',
     '*', '+', '-', '.', '=', '-', '_', ':', ';', '/',
@@ -105,6 +105,8 @@ function show_word() {
                     } else {
                         document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
                     };
+                } else if (e === 'dead') {
+                    //letras com acentos...
                 };
             };
         };
