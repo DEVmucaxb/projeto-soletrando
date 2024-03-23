@@ -401,126 +401,126 @@ let spell = [
     },
     {
         word: 'antagônico',
-        id: 90
-    },
-    {
-        word: 'reminiscência',
-        id: 91
-    },
-    {
-        word: 'sistemático',
-        id: 92
-    },
-    {
-        word: 'província',
-        id: 93
-    },
-    {
-        word: 'hipótese',
-        id: 94
-    },
-    {
-        word: 'solidário',
-        id: 95
-    },
-    {
-        word: 'instável',
-        id: 96
-    },
-    {
-        word: 'moléstia',
-        id: 97
-    },
-    {
-        word: 'ápice',
-        id: 98
-    },
-    {
-        word: 'maledicência',
-        id: 99
-    },
-    {
-        word: 'extemporâneo',
         id: 100
     },
     {
-        word: 'intolerância',
+        word: 'reminiscência',
         id: 101
     },
     {
-        word: 'formidável',
+        word: 'sistemático',
         id: 102
     },
     {
-        word: 'ânsia',
+        word: 'província',
         id: 103
     },
     {
-        word: 'melancólico',
+        word: 'hipótese',
         id: 104
     },
     {
-        word: 'factível',
+        word: 'solidário',
         id: 105
     },
     {
-        word: 'implacável',
+        word: 'instável',
         id: 106
     },
     {
-        word: 'flâmula',
+        word: 'moléstia',
         id: 107
     },
     {
-        word: 'lunático',
+        word: 'ápice',
         id: 108
     },
     {
-        word: 'locatário',
+        word: 'maledicência',
         id: 109
     },
     {
-        word: 'bíblia',
+        word: 'extemporâneo',
         id: 110
     },
     {
-        word: 'competência',
+        word: 'intolerância',
         id: 111
     },
     {
-        word: 'desprezível',
+        word: 'formidável',
         id: 112
     },
     {
-        word: 'perecível',
+        word: 'ânsia',
         id: 113
     },
     {
-        word: 'simplório',
+        word: 'melancólico',
         id: 114
     },
     {
-        word: 'longânimo',
+        word: 'factível',
         id: 115
     },
     {
-        word: 'petulância',
+        word: 'implacável',
         id: 116
     },
     {
-        word: 'mercê',
+        word: 'flâmula',
         id: 117
     },
     {
-        word: 'aquiescência',
+        word: 'lunático',
         id: 118
     },
     {
-        word: 'assiduidade',
+        word: 'locatário',
         id: 119
     },
     {
-        word: 'miçanga',
+        word: 'bíblia',
         id: 120
+    },
+    {
+        word: 'competência',
+        id: 121
+    },
+    {
+        word: 'desprezível',
+        id: 122
+    },
+    {
+        word: 'perecível',
+        id: 123
+    },
+    {
+        word: 'simplório',
+        id: 124
+    },
+    {
+        word: 'longânimo',
+        id: 125
+    },
+    {
+        word: 'petulância',
+        id: 126
+    },
+    {
+        word: 'mercê',
+        id: 127
+    },
+    {
+        word: 'aquiescência',
+        id: 128
+    },
+    {
+        word: 'assiduidade',
+        id: 129
+    },
+    {
+        word: 'miçanga',
+        id: 130
     }
 ];

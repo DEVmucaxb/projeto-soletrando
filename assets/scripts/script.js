@@ -1,21 +1,44 @@
 //Intial Data
 let current_word = '';
 let current_id = 0;
+let special_letters = ['arrowleft', 'arrowright', 'backspace'];
 let banned_letters = [
     'enter', 'alt', 'shift', 'control', 'capslock',
     '*', '+', '-', '.', '=', '-', '_', ':', ';', '/',
     '|', 'arrowup', 'arrowdown', 'insert', 'delete',
     'home', 'end', 'pageup', 'pagedown', 'numlock',
     'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8',
-    'f9', 'f10', 'f11', 'f12', 'altgraph', 'contextmenu'
+    'f9', 'f10', 'f11', 'f12', 'altgraph', 'contextmenu',
+    'dead'
 ];
-let special_letters = ['arrowleft', 'arrowright', 'backspace'];
 
-show_word();
+let changed_id = () => {
+    let id = Number(document.querySelector('#input_id').value);
+
+    if (id >= spell.length) {
+        alert(`palavra não encontrada.`);
+        id = null; //essa linha n funciona, consertar!
+        return;
+
+    } else {
+        current_id = id;
+        document.querySelector('section').style.display = 'block';
+        document.body.style.backgroundColor = 'blue';
+
+        console.log(spell[current_id].word)
+        show_word();
+    };
+};
+
+//Events
+document.querySelector('#input_id').addEventListener('change', changed_id);
+
+document.querySelector('#finish').addEventListener('click', finish);
 
 
 //Functions
 function show_word() {
+
     let word_turn = spell[current_id];
     const word_container = document.querySelector('#word-section');
     word_container.innerHTML = '';
@@ -103,42 +126,45 @@ function show_word() {
         };
     };
 
-    function visual_within(x) { //não consegui fazer
+    function letter_animation(x) { //não consegui fazer
         x.classList.add('within');
         setTimeout(() => x.classList.remove('within'), 1000);
     };
 
 };
 
-
-
-
-
-document.querySelector('#finish_or_reset').addEventListener('click', finish_reset);
-
-function finish_reset() {
+function finish() {
     let word_turn = spell[current_id];
-    let f_r = document.querySelector('#finish_or_reset').getAttribute('data-finishreset');
+    let fin = document.querySelector('#finish').innerHTML;
 
-    if (f_r === '1') {
-        document.querySelector('#finish_or_reset').setAttribute('data-finishreset', '0');
+    if (fin === 'checar') {
 
         //checar se a palavra digitada é a correta
         if (check_word() === true) {
             console.log('Acertou a palavra!');
             document.body.style.backgroundColor = 'green';
+            document.querySelector('#s_correct').currrentTime = 0;
+            document.querySelector('#s_correct').play();
+            document.querySelector('section').style.display = 'none';
+            document.querySelector('#finish').innerHTML = 'resetar';
         } else if (!check_word()) {
             console.log('errou a palavra');
             document.body.style.backgroundColor = 'red';
+            document.querySelector('#s_wrong').currrentTime = 0;
+            document.querySelector('#s_wrong').play();
+            document.querySelector('section').style.display = 'none';
+            document.querySelector('#finish').innerHTML = 'resetar';
         } else if (check_word() === 'incompleta') {
             alert('Digite em todos os espaços');
         };
 
-    } else if (f_r === '0') {
-        document.querySelector('#finish_or_reset').setAttribute('data-finishreset', '1');
+    } else if (fin === 'resetar') {
+        document.querySelector('section').style.display = 'block';
+        document.body.style.backgroundColor = 'blue';
+        current_id = document.querySelector('#input_id').value = null;
 
-        //resetar o soletrando.
-        reset_game();
+        document.querySelector('#word-section').innerHTML = '';
+        document.querySelector('#finish').innerHTML = 'checar';
     };
 
     function check_word() {
@@ -165,11 +191,6 @@ function finish_reset() {
         };
 
         return true; //acertou a palavra
-    };
-
-    function reset_game() {
-        console.log('resetou')
-
     };
 
 };
