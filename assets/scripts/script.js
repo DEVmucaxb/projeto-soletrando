@@ -74,6 +74,8 @@ function show_word() {
 
 
     function write_letter_turn(e) {
+        document.querySelector(`div.letter[data-index="${letter_index}"]`).classList.add('revealed');
+
         console.log(e)
         //remover o event listener imediatamente após o usuário digitar
         document.removeEventListener('keydown', lp);
