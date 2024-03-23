@@ -69,13 +69,14 @@ function show_word() {
     }
 
     function within() {
-        document.addEventListener('keyup', lp);
+        document.addEventListener('keydown', lp);
     };
 
 
     function write_letter_turn(e) {
+        console.log(e)
         //remover o event listener imediatamente após o usuário digitar
-        document.removeEventListener('keyup', lp);
+        document.removeEventListener('keydown', lp);
 
         //substituir o '-' da div pela letra digitada
         console.log('O índice da letra clicada foi: ', letter_index)
@@ -107,6 +108,19 @@ function show_word() {
                     };
                 } else if (e === 'dead') {
                     //letras com acentos...
+
+                    // Mapear as teclas de atalho para as letras acentuadas correspondentes
+                    const accentedLetters = {
+                        'a': 'á', 'e': 'é', 'i': 'í', 'o': 'ó', 'u': 'ú',
+                        'A': 'Á', 'E': 'É', 'I': 'Í', 'O': 'Ó', 'U': 'Ú'
+                    };
+
+                    const lastTypedLetter = letterDiv.textContent;
+
+                    if (lastTypedLetter in accentedLetters) {
+                        letterDiv.textContent = accentedLetters[lastTypedLetter];
+                        toggle_letter();
+                    }
                 };
             };
         };
