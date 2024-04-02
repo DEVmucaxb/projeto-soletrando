@@ -74,62 +74,38 @@ function show_word() {
 
 
     function write_letter_turn(e) {
+        console.log(e)
+        console.log('O índice da letra clicada foi: ', letter_index)
+
         document.querySelector(`div.letter[data-index="${letter_index}"]`).classList.add('revealed');
 
-        console.log(e)
         //remover o event listener imediatamente após o usuário digitar
         document.removeEventListener('keydown', lp);
 
-        //substituir o '-' da div pela letra digitada
-        console.log('O índice da letra clicada foi: ', letter_index)
 
         if (!banned_letters.includes(e) && isNaN(e)) {
             if (!special_letters.includes(e)) {
-                document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
+                toggle_letterw2('letra_normal', e);
 
-                toggle_letter();
             } else { //avançar, retroceder ou apagar a letra digitada
                 console.log('seta clicada')
 
                 if (e === 'arrowleft') {
-                    if (letter_index !== 0) {
-                        letter_index -= 2;
-                        toggle_letter();
-                    };
+                    toggle_letterw2('arrowleft');
+
                 } else if (e === 'arrowright') {
-                    if (letter_index < word_turn.word.length - 1) {
-                        toggle_letter();
-                    };
+                    toggle_letterw2('arrowright');
+
                 } else if (e === 'backspace') {
-                    console.log('jjjj')
-                    if (letter_index !== 0) {
-                        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
-                        letter_index--;
-                    } else {
-                        document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
-                    };
+                    toggle_letterw2('backspace');
+
                 } else if (e === 'dead') {
                     //letras com acentos...
-
-                    // Mapear as teclas de atalho para as letras acentuadas correspondentes
-                    const accentedLetters = {
-                        'a': 'á', 'e': 'é', 'i': 'í', 'o': 'ó', 'u': 'ú',
-                        'A': 'Á', 'E': 'É', 'I': 'Í', 'O': 'Ó', 'U': 'Ú'
-                    };
-
-                    const lastTypedLetter = letterDiv.textContent;
-
-                    if (lastTypedLetter in accentedLetters) {
-                        letterDiv.textContent = accentedLetters[lastTypedLetter];
-                        toggle_letter();
-                    }
+                    toggle_letterw2('dead');
                 };
             };
         };
-
-        //Para caso o usuário digitar uma letra inválida, pois o programa deve continuar sem dar erros.
-        letter_index--;
-        toggle_letter();
+        toggle_letterw2('invalid_letter');
     };
 
     function toggle_letter() {
@@ -143,6 +119,59 @@ function show_word() {
             console.log(`A letra não pode ser pulada pois é a ultima`);
         };
     };
+
+    function toggle_letterw2(cases, e) {
+        if (cases === 'letra_normal') {
+            document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = e;
+
+            toggle_letter();
+        };
+
+        if (cases === 'arrowleft') {
+            if (letter_index !== 0) {
+                letter_index -= 2;
+                toggle_letter();
+            };
+        };
+
+        if (cases === 'arrowright') {
+            if (letter_index < word_turn.word.length - 1) {
+                toggle_letter();
+            };
+        };
+
+        if (cases === 'backspace') {
+            console.log('backspace')
+
+            document.querySelector(`div[data-index="${letter_index}"]`).innerHTML = '-';
+
+            if (letter_index !== 0) { letter_index-- };
+        };
+
+        if (cases === 'dead') {
+            const accentedLetters = {
+                'a': 'á', 'e': 'é', 'i': 'í', 'o': 'ó', 'u': 'ú',
+                'A': 'Á', 'E': 'É', 'I': 'Í', 'O': 'Ó', 'U': 'Ú'
+            };
+
+            const lastTypedLetter = letterDiv.textContent;
+
+            if (lastTypedLetter in accentedLetters) {
+                letterDiv.textContent = accentedLetters[lastTypedLetter];
+                toggle_letter();
+            };
+
+        };
+
+        if (cases === 'invalid_letter') {
+            letter_index--;
+            toggle_letter();
+        };
+    };
+
+
+
+
 
     function letter_animation(x) { //não consegui fazer
         x.classList.add('within');
@@ -176,7 +205,9 @@ function finish() {
             alert('Digite em todos os espaços');
         };
 
-    } else if (fin === 'resetar') {
+    };
+
+    if (fin === 'resetar') {
         document.querySelector('section').style.display = 'block';
         document.body.style.backgroundColor = 'blue';
         current_id = document.querySelector('#input_id').value = null;
